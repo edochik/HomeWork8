@@ -41,13 +41,16 @@ void FindSmallElement(int[,] array)
 {
     int sum = 0;
     int j = 0;
-    for (int i = 0; i < array.GetLength(1); i++)
+    for (int i = 0; i < array.GetLength(0); i++)
     {
-        sum += array[i, j];
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            sum += array[i, j];
+
+        }
         Console.WriteLine($"{i + 1} {sum}");
-        j++;
     }
-    
+
 }
 
 
