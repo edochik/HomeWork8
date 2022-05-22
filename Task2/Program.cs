@@ -1,14 +1,23 @@
 ﻿// Задача 2: Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.
 // Console.WriteLine("Среднее: " + avg);
+/*
+1. Создать массив
+2. Напечатать массив.
+3.1. Счет строк.
+3.2. Сравнение строк
+3.3. Найти строку с наименьшей суммой;
+3.4. Вывести среднее значение;
+*/
 // не понятно как разделить строки, чтобы вместе их не считать.
 // не понятно как счетчик считает
+
 int[,] CreateMatrix(int[,] matrix)
 {
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            matrix[i, j] = new Random().Next(0, 4);
+            matrix[i, j] = new Random().Next(1, 4);
         }
     }
     return matrix;
@@ -30,22 +39,53 @@ void PrintMatrix(int[,] matrix)
 
 void FindSmallElement(int[,] array)
 {
-    int sum1 = 0;
-    int sum2 = 0;
-    for (int i = 0; i < array.GetLength(0); i++)
+    int sum = 0;
+    int j = 0;
+    for (int i = 0; i < array.GetLength(1); i++)
     {
-        sum1 = sum1 + array[0, 0] + array[0, 1] + array[0, 2];
-        sum2 = sum2 + array[1, 0] + array[1, 1] + array[1, 2];
-        break;
+        sum += array[i, j];
+        Console.WriteLine($"{i + 1} {sum}");
+        j++;
     }
-
-
-    Console.Write($"{sum1} = {sum2}");
+    
 }
 
 
-int[,] matrix = new int[2, 3];
+int[,] matrix = new int[3, 2];
 CreateMatrix(matrix);
 PrintMatrix(matrix);
 Console.WriteLine();
 FindSmallElement(matrix);
+
+/*
+int[] CreateArray(int[] array)
+{
+    for (int i = 0; i < array.Length; i++)
+    {
+        array[i] = new Random().Next(0, 4);
+    }
+    return array;
+}
+
+void PrintArray(int[] array)
+{
+    for (int i = 0; i < array.Length; i++)
+    {
+        Console.Write($" {array[i]}");
+    }
+}
+int SumArray(int[] array)
+{
+    int sum = 0;
+    for (int i = 0; i < array.Length; i++)
+    {
+        sum += array[i];
+    }
+    return sum;
+}
+int[] array = new int[4];
+CreateArray(array);
+PrintArray(array);
+Console.WriteLine();
+Console.Write(SumArray(array));
+*/
