@@ -1,43 +1,49 @@
 ﻿// Задача 2: Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.
 // Console.WriteLine("Среднее: " + avg);
-
-double[] CreateArray(double[] array)
+int[,] CreateMatrix(int[,] matrix)
 {
-    for (double i = 0; i < array.Length; i++)
+    for (int i = 0; i < matrix.GetLength(0); i++)
     {
-        array[(int)i] = new Random().NextDouble()*0.1;
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            matrix[i, j] = new Random().Next(0, 4);
+        }
     }
-    return array;
+    return matrix;
 }
 
-void PrintArray(double[] array)
-
+void PrintMatrix(int[,] matrix)
 {
-    for (double i = 0; i < array.Length; i++)
+    for (int i = 0; i < matrix.GetLength(0); i++)
     {
-        Console.Write($" {array[(int)i]}");
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            Console.Write($" {matrix[i, j]}");
+        }
+        Console.WriteLine();
     }
 }
+// i = row;
+// j = column;
 
-double[] array = new double[6];
-
-int AveregNumberArray(int[] array)
+void FindSmallElement(int[,] array)
 {
-    int resultA = 0;
-    int resultB = 0;
-    int avg = 0;
-    // for (int i = 0; i < array.Length; i++)
-    // {
-        // if (array[i] > -1) resultA += 1;
-    // }
-    for (int j = 0; j < array.Length; j++)
+    int sum1 = 0;
+    int sum2 = 0;
+    for (int i = 0; i < array.GetLength(0); i++)
     {
-        if (array[j] > 0) resultB += array[j];
+        sum1 = sum1 + array[0, 0] + array[0, 1] + array[0, 2];
+        sum2 = sum2 + array[1, 0] + array[1, 1] + array[1, 2];
+        break;
     }
-    return avg = resultB / array.Length;
+
+
+    Console.Write($"{sum1} = {sum2}");
 }
 
-CreateArray(array);
-PrintArray(array);
+
+int[,] matrix = new int[2, 3];
+CreateMatrix(matrix);
+PrintMatrix(matrix);
 Console.WriteLine();
-Console.Write(AveregNumberArray(array));
+FindSmallElement(matrix);
