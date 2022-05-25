@@ -17,7 +17,7 @@ int[,] CreateMatrix(int[,] matrix)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            matrix[i, j] = new Random().Next(1, 4);
+            matrix[i, j] = new Random().Next(0, 9);
         }
     }
     return matrix;
@@ -39,56 +39,26 @@ void PrintMatrix(int[,] matrix)
 
 void FindSmallElement(int[,] array)
 {
-    int sum = 0;
-    int j = 0;
+
+    int find = 100; // только надо сделать так, чтобы число автоматически приходило
     for (int i = 0; i < array.GetLength(0); i++)
     {
+        int min = 0;
         for (int j = 0; j < array.GetLength(1); j++)
         {
-            sum += array[i, j];
+            min += array[i, j];
 
         }
-        Console.WriteLine($"{i + 1} {sum}");
-    }
 
+        if (min < find) find = min;
+
+    }
+    Console.WriteLine(find);
 }
 
 
-int[,] matrix = new int[3, 2];
+int[,] matrix = new int[4, 4];
 CreateMatrix(matrix);
 PrintMatrix(matrix);
 Console.WriteLine();
 FindSmallElement(matrix);
-
-/*
-int[] CreateArray(int[] array)
-{
-    for (int i = 0; i < array.Length; i++)
-    {
-        array[i] = new Random().Next(0, 4);
-    }
-    return array;
-}
-
-void PrintArray(int[] array)
-{
-    for (int i = 0; i < array.Length; i++)
-    {
-        Console.Write($" {array[i]}");
-    }
-}
-int SumArray(int[] array)
-{
-    int sum = 0;
-    for (int i = 0; i < array.Length; i++)
-    {
-        sum += array[i];
-    }
-    return sum;
-}
-int[] array = new int[4];
-CreateArray(array);
-PrintArray(array);
-Console.WriteLine();
-Console.Write(SumArray(array));
-*/
