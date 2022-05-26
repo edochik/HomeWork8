@@ -1,15 +1,4 @@
 ﻿// Задача 2: Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.
-// Console.WriteLine("Среднее: " + avg);
-/*
-1. Создать массив
-2. Напечатать массив.
-3.1. Счет строк.
-3.2. Сравнение строк
-3.3. Найти строку с наименьшей суммой;
-3.4. Вывести среднее значение;
-*/
-// не понятно как разделить строки, чтобы вместе их не считать.
-// не понятно как счетчик считает
 
 int[,] CreateMatrix(int[,] matrix)
 {
@@ -34,31 +23,40 @@ void PrintMatrix(int[,] matrix)
         Console.WriteLine();
     }
 }
-// i = row;
-// j = column;
 
-void FindSmallElement(int[,] array)
+
+void FindSmallSumRow(int[,] array)
 {
-
-    int find = 100; // только надо сделать так, чтобы число автоматически приходило
+    int sum = 0;
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            sum += array[i, j];
+        }
+    }
+    int index = 0;
+    int find = sum; // только надо сделать так, чтобы число автоматически приходило
     for (int i = 0; i < array.GetLength(0); i++)
     {
         int min = 0;
         for (int j = 0; j < array.GetLength(1); j++)
         {
             min += array[i, j];
-
+        }
+        if (min < find)
+        {
+            find = min;
+            index = i;
         }
 
-        if (min < find) find = min;
-
     }
-    Console.WriteLine(find);
+    Console.WriteLine($"{find} {index}");
 }
 
 
-int[,] matrix = new int[4, 4];
+int[,] matrix = new int[3, 5];
 CreateMatrix(matrix);
 PrintMatrix(matrix);
 Console.WriteLine();
-FindSmallElement(matrix);
+FindSmallSumRow(matrix);

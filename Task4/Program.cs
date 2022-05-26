@@ -9,7 +9,7 @@ int[,,] CreateMatrix(int[,,] matrix)
         {
             for (int z = 0; z < matrix.GetLength(2); z++)
             {
-                matrix[i, j, z] = new Random().Next(0, 9);
+                matrix[i, j, z] = new Random().Next(10, 100);
             }
 
         }
