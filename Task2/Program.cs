@@ -27,16 +27,15 @@ void PrintMatrix(int[,] matrix)
 
 void FindSmallSumRow(int[,] array)
 {
-    int sum = 0;
+    int SumArray = 0;
     for (int i = 0; i < array.GetLength(0); i++)
     {
         for (int j = 0; j < array.GetLength(1); j++)
         {
-            sum += array[i, j];
+            SumArray += array[i, j];
         }
     }
     int index = 0;
-    int find = sum; // только надо сделать так, чтобы число автоматически приходило
     for (int i = 0; i < array.GetLength(0); i++)
     {
         int min = 0;
@@ -44,19 +43,21 @@ void FindSmallSumRow(int[,] array)
         {
             min += array[i, j];
         }
-        if (min < find)
+        if (min < SumArray)
         {
-            find = min;
+            SumArray = min;
             index = i;
         }
 
     }
-    Console.WriteLine($"{find} {index}");
+    Console.WriteLine($"{SumArray} {index}");
 }
 
-
 int[,] matrix = new int[3, 5];
+
 CreateMatrix(matrix);
 PrintMatrix(matrix);
 Console.WriteLine();
 FindSmallSumRow(matrix);
+
+
