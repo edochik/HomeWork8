@@ -25,7 +25,7 @@ void PrintMatrix(int[,] matrix)
 }
 
 
-void FindSmallSumRow(int[,] array)
+(int, int) FindSmallSumRow(int[,] array)
 {
     int SumArray = 0;
     for (int i = 0; i < array.GetLength(0); i++)
@@ -50,7 +50,7 @@ void FindSmallSumRow(int[,] array)
         }
 
     }
-    Console.WriteLine($"{SumArray} {index}");
+    return (index, SumArray);
 }
 
 int[,] matrix = new int[3, 5];
@@ -58,6 +58,6 @@ int[,] matrix = new int[3, 5];
 CreateMatrix(matrix);
 PrintMatrix(matrix);
 Console.WriteLine();
-FindSmallSumRow(matrix);
+Console.Write(FindSmallSumRow(matrix));
 
 
